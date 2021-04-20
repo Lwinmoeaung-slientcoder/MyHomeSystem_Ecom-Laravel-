@@ -57,5 +57,11 @@
   <!-- end common js -->
 
   @stack('custom-scripts')
+
+<!-- Input Now -->
+  <script type="text/javascript" src="{{ URL::asset('js/table.js') }}"></script>
+
 </body>
 </html>
+
+

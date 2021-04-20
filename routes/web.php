@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('Dashboard');
 });
 
 // Route::get('/','DashboardController@index');
@@ -78,6 +78,7 @@ Route::get('notifications', function () {
     return view('pages.notifications.index');
 });
 
+
 Route::group(['prefix' => 'icons'], function(){
     Route::get('material', function () { return view('pages.icons.material'); });
     Route::get('flag-icons', function () { return view('pages.icons.flag-icons'); });
@@ -129,6 +130,11 @@ Route::group(['prefix' => 'ecommerce'], function(){
     Route::get('orders', function () { return view('pages.ecommerce.orders'); });
 });
 
+//Insert Now
+Route::get('goldquality', 'GoldqualityController@index');
+Route::post('goldquality', 'GoldqualityController@insert');
+Route::get('goldquality/{id}', 'GoldqualityController@delete');
+
 // For Clear cache
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
@@ -139,3 +145,4 @@ Route::get('/clear-cache', function() {
 Route::any('/{page?}',function(){
     return View::make('pages.error-pages.error-404');
 })->where('page','.*');
+
