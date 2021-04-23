@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('Dashboard');
-});
+Auth::routes(['verify' => true]);
+
+
+// Route::get('/testing', function () {
+//     return view('testing');
+// });
 
 // Route::get('/','DashboardController@index');
 
@@ -131,9 +134,42 @@ Route::group(['prefix' => 'ecommerce'], function(){
 });
 
 //Insert Now
+
+//GoldQuality
+//21042021
 Route::get('goldquality', 'GoldqualityController@index');
 Route::post('goldquality', 'GoldqualityController@insert');
 Route::get('goldquality/{id}', 'GoldqualityController@delete');
+
+//ProductLists
+//22042021
+Route::get('productlists', 'ProductListsController@index');
+Route::get('productlists/{id}', 'ProductListsController@delete');
+Route::get('productlists/edit/{id}', 'ProductListsController@editscreen');
+Route::post('productlists/edit/{id}', 'ProductListsController@edit');
+Route::post('add', 'ProductListsController@insert');
+Route::get('add', 'ProductListsController@addnewscreen');
+
+//Register form
+//22042021
+Route::get('users/register', 'Auth\RegisterController@show');
+Route::post('users/register', 'Auth\RegisterController@register');
+Route::get('users/{id}', 'UsersController@delete');
+
+//LogOut Form
+//22042021
+Route::get('users/logut', 'Auth\LoginController@logout');
+
+//DashBoard
+//23042021
+Route::get('dashboard', 'DashboardController@index');
+
+//SalesProducts
+//23042021
+Route::get('sales', 'SaleProductsController@index');
+Route::get('sales/{id}/sell', 'SaleProductsController@editscreen');
+Route::post('sales/{id}/sell', 'SaleProductsController@add');
+Route::get('sales/{id}', 'SaleProductsController@delete');
 
 // For Clear cache
 Route::get('/clear-cache', function() {
@@ -145,4 +181,6 @@ Route::get('/clear-cache', function() {
 Route::any('/{page?}',function(){
     return View::make('pages.error-pages.error-404');
 })->where('page','.*');
+
+
 

@@ -16,16 +16,12 @@ class GoldqualityController extends Controller
         Goldquality::create([
             'goldquality' => $request->get('goldquality'),
         ]);
-        return redirect()->back()->with('status','Inserted Data Successfully!');
+        return redirect()->back()->with('status','အောင်မြင်စွာထည့်ပြီးပါပြီ');
       }
 
       public function delete($id){
-        // $data=Goldquality::find($id)->firstOrFail();
-        // $data->delete();
-        // $del_data = Goldquality::where('id', '=', $id)->firstOrFail();
-        //  $del_data->destroy();
         Goldquality::destroy($id);
-        return redirect()->back()->with('status','Deleted Successfully!');
+        return redirect()->back()->with('status','အောင်မြင်စွာဖျက်လိုက်ပါပြီ!');
     }
 
 }

@@ -52,14 +52,14 @@
             <i class="mdi mdi-poll-box text-success icon-lg"></i>
           </div>
           <div class="float-right">
-            <p class="mb-0 text-right">Sales</p>
+            <p class="mb-0 text-right">လက်ရှိပစ္စည်းစုစုပေါင်း</p>
             <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">5693</h3>
+              <h3 class="font-weight-medium text-right mb-0">{{$products}}</h3>
             </div>
           </div>
         </div>
         <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left">
-          <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Weekly Sales </p>
+          <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Inventory List </p>
       </div>
     </div>
   </div>
@@ -71,9 +71,9 @@
             <i class="mdi mdi-account-box-multiple text-info icon-lg"></i>
           </div>
           <div class="float-right">
-            <p class="mb-0 text-right">Employees</p>
+            <p class="mb-0 text-right">အသုံးပြုသူစုစုပေါင်း</p>
             <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">246</h3>
+              <h3 class="font-weight-medium text-right mb-0">{{$users}}</h3>
             </div>
           </div>
         </div>

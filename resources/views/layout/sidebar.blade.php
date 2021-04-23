@@ -39,8 +39,8 @@
         </button>
       </div>
     </li>
-    <li class="nav-item {{ active_class(['/']) }}">
-      <a class="nav-link" href="{{ url('/') }}">
+    <li class="nav-item {{ active_class(['/dashboard']) }}">
+      <a class="nav-link" href="{{ url('/dashboard') }}">
         <i class="menu-icon mdi mdi-television"></i>
         <span class="menu-title">Dashboard</span>
       </a>
@@ -110,5 +110,34 @@
         <span class="menu-title">Documentation</span>
       </a>
     </li>
+
+    <li class="nav-item {{ active_class(['/users/register']) }}">
+      <a class="nav-link" href="{{ url('/users/register') }}">
+        <i class="mdi mdi-message-text"></i>
+        <span class="menu-title">အသုံးပြုသူစာရင်း</span> 
+        </a>
+      </li>
+
+    <li class="nav-item {{ active_class(['/productlists']) }}">
+      <a class="nav-link" href="{{ url('/productlists') }}">
+        <i class="mdi mdi-message-text"></i>
+        <span class="menu-title">ပစ္စည်းစာရင်း</span> 
+        </a>
+      </li>
+
+      <li class="nav-item {{ active_class(['/sales']) }}">
+      <a class="nav-link" href="{{ url('/sales') }}">
+        <i class="mdi mdi-message-text"></i>
+        <span class="menu-title">အရောင်းစာရင်း</span> 
+        </a>
+      </li>
+
+    <li class="nav-item {{ active_class(['/goldquality']) }}">
+      <a class="nav-link" href="{{ url('/goldquality') }}">
+        <i class="mdi mdi-message-text"></i>
+        <span class="menu-title">ရွှေအရည်အသွေးထည့်ရန်</span>
+      </a>
+    </li>
   </ul>
 </nav>
+

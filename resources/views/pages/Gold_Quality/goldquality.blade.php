@@ -62,7 +62,7 @@
                     <td>{{$i}}</td>
                     <td>{{ $data->goldquality }}</td>
                     <td>
-                        <a href="{{ action('GoldqualityController@delete',$data->id) }}" class="btn btn-danger btn-sm">Damage</a>
+                        <a href="{{ action('GoldqualityController@delete',$data->id) }}" class="btn btn-danger btn-sm"><i class="mdi mdi-delete"></i></a>
                     </td>
                   </tr>
                   @endforeach
