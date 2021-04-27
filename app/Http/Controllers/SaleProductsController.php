@@ -17,12 +17,18 @@ class SaleProductsController extends Controller
         return view('pages.Products.saleproducts', compact('saledata'));
       }
 
-    public function editscreen($id){
+    public function movesalelistscreen($id){
         $goldqualitydata = $goldqualitydata = Goldquality::all();
         $products=ProductLists::whereId($id)->firstorFail();
-      return view('pages.Products.edit_salesproducts', compact(['products','goldqualitydata']));
-   
+      return view('pages.Products.move_productstosalelists', compact(['products','goldqualitydata']));
   }
+
+  public function editscreen($id){
+    $goldqualitydata = $goldqualitydata = Goldquality::all();
+    $products=SaleProducts::whereId($id)->firstorFail();
+  return view('pages.Products.edit_salesproducts', compact(['products','goldqualitydata']));
+}
+
     public function edit(SalesProductRequest $request,$id){
         $products=SaleProducts::whereId($id)->firstorFail();
         $products->name         = $request->get('name');
@@ -36,8 +42,8 @@ class SaleProductsController extends Controller
         $products->k_kyat       = $request->get('k_kyat');
         $products->k_pel        = $request->get('k_pel');
         $products->k_yway       = $request->get('k_yway');
-        $products->total_cost      = $request->get('total_cost');
-        $products->bought_date  = $request->get('sold_date');
+        $products->total_cost   = $request->get('total_cost');
+        $products->sold_date  = $request->get('sold_date');
         $products->update();
         return redirect()->back()->with('status','အောင်မြင်စွာပြင်ပြီးပါပြီ');
       }
@@ -61,9 +67,8 @@ class SaleProductsController extends Controller
         $result=ProductLists::where('id','=',$id);
         $result->delete();
         $productsdata = ProductLists::all();
-        return view('pages.Products.productlists')->with(compact('productsdata'),['status'=>'အရောင်းစာရင်းထဲထည့်လိုက်ပါပြီ']);
-     
-     
+        session()->flash('status', 'အရောင်းစာရင်းသို့ရွှေ့လိုက်လိုက်ပါပြီ');
+        return view('pages.Products.productlists')->with('productsdata',$productsdata);
         }
 
       public function delete($id){

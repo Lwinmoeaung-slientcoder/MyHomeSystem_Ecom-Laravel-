@@ -11,17 +11,17 @@
       <div class="card-body">
         <div class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
           <div class="float-left">
-            <i class="mdi mdi-cube text-danger icon-lg"></i>
+            <i class="mdi mdi-coin text-danger icon-lg"></i>
           </div>
           <div class="float-right">
             <p class="mb-0 text-right">Total Revenue</p>
             <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">$65,650</h3>
+              <h3 class="font-weight-medium text-right mb-0">{{$total_amount}}</h3>
             </div>
           </div>
         </div>
         <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left">
-          <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> 65% lower growth </p>
+          <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total Revenue </p>
       </div>
     </div>
   </div>
@@ -33,9 +33,9 @@
             <i class="mdi mdi-receipt text-warning icon-lg"></i>
           </div>
           <div class="float-right">
-            <p class="mb-0 text-right">Orders</p>
+            <p class="mb-0 text-right">အရောင်းစာရင်း</p>
             <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">3455</h3>
+              <h3 class="font-weight-medium text-right mb-0">{{$saledata}}</h3>
             </div>
           </div>
         </div>
@@ -78,7 +78,8 @@
           </div>
         </div>
         <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left">
-          <i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Product-wise sales </p>
+          <i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Total Users </p>
+          <a href="{{ url('/logout') }}"> logout </a>
       </div>
     </div>
   </div>

@@ -85,6 +85,7 @@
                     <td>{{ $data->total_cost }}</td>
                     <td>{{ $data->sold_date }}</td>
                     <td>
+                    <a href="{{ action('SaleProductsController@editscreen',$data->id) }}" class="btn btn-primary btn-sm"><i class="mdi mdi-border-color"></i></a>
                     <a href="{{ action('SaleProductsController@delete',$data->id) }}" class="btn btn-danger btn-sm"><i class="mdi mdi-delete"></i></a>
                     </td>
                   </tr>

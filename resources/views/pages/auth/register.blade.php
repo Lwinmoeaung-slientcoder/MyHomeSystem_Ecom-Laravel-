@@ -12,10 +12,11 @@
       </div>
     </div>
 <div class="row">
+@if (session('editvalue')== '')
   <div class="col-lg-3 grid-margin stretch-card">
     <div class="card">
       <div class="p-4 border-bottom bg-light">
-        <h4 class="card-title mb-0">ရွှေအရည်အသွေး</h4>
+        <h4 class="card-title mb-0">အသုံးပြုသူအသစ်ထည့်ရန်</h4>
       </div>
       <div class="card-body">
    
@@ -23,25 +24,33 @@
              
                   <div class="box-body">
                   <input type="hidden" name="_token" value="{{csrf_token()}}">
-                    <div class="form-group {{ $errors->has('kyat') ? 'has-error' : ''}}">
-                      <label for="category">အသုံးပြုသူနာမည်ထည့်ရန်</label>
-                      <input type="text" class="form-control" name="name" placeholder="အသုံးပြုသူနာမည်ထည့်ရန်နေရာ">
+                    <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
+                      <label for="username">အသုံးပြုသူနာမည်ထည့်ရန်</label>
+                      <input type="text" class="form-control" id="username" name="name" placeholder="အသုံးပြုသူနာမည်ထည့်ရန်နေရာ">
                       {!! $errors->first('name', '<p class="help-block"><font color="red">:message</font></p>') !!}
                     </div>
-                    <div class="form-group {{ $errors->has('kyat') ? 'has-error' : ''}}">
-                      <label for="category">စကားဝှက်ထည့်ရန်</label>
-                      <input type="password" class="form-control" name="password" placeholder="စကားဝှက်ထည့်ရန်နေရာ">
+                    <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
+                      <label for="password">စကားဝှက်ထည့်ရန်</label>
+                      <input type="password" class="form-control" id="password" name="password" placeholder="စကားဝှက်ထည့်ရန်နေရာ">
                       {!! $errors->first('password', '<p class="help-block"><font color="red">:message</font></p>') !!}
                     </div>
-                    <div class="form-group {{ $errors->has('kyat') ? 'has-error' : ''}}">
-                      <label for="category">စကားဝှက်ကိုနောက်တစ်ကြိမ်ပြန်ထည့်ရန်</label>
-                      <input type="password" class="form-control" name="password_confirmation" placeholder="စကားဝှက်ကိုနောက်တစ်ကြိမ်ပြန်ထည့်ရန်">
+                    <div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' : ''}}">
+                      <label for="password_confirmation">စကားဝှက်ကိုနောက်တစ်ကြိမ်ပြန်ထည့်ရန်</label>
+                      <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="စကားဝှက်ကိုနောက်တစ်ကြိမ်ပြန်ထည့်ရန်">
                       {!! $errors->first('password_confirmation', '<p class="help-block"><font color="red">:message</font></p>') !!}
                     </div>
-                    <div class="form-group {{ $errors->has('kyat') ? 'has-error' : ''}}">
-                      <label for="category">Email</label>
-                      <input type="email" class="form-control" name="email" placeholder="Email ထည့်ရန်နေရာ">
+                    <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="Email ထည့်ရန်နေရာ">
                       {!! $errors->first('email', '<p class="help-block"><font color="red">:message</font></p>') !!}
+                    </div>
+                    <div class="form-group {{ $errors->has('role') ? 'has-error' : ''}}">
+                    <label for="cars">ရာထူးကို‌ရွေးပါ။</label>
+                      <select name="role" id="role">
+                      <option value="Guest" selected> Guest </option>
+                        <option value="Manager">Manager</option>
+                      </select>
+                      {!! $errors->first('role', '<p class="help-block"><font color="red">:message</font></p>') !!}
                     </div>
                   </div><!-- /.box-body -->
                   <div class="box-footer">
@@ -50,18 +59,69 @@
                 </form>
       </div>
     </div>
+    @else
+    <!-- Edit User -->
+    <div class="col-lg-3 grid-margin stretch-card">
+    <div class="card">
+      <div class="p-4 border-bottom bg-light">
+        <h4 class="card-title mb-0">အသုံးပြုသူအချက်အလက်ပြင်ရန်</h4>
+      </div>
+      <div class="card-body">
+   
+              <form method="POST">
+             
+                  <div class="box-body">
+                  <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
+                      <label for="username">အသုံးပြုသူနာမည်ထည့်ရန်</label>
+                      <input type="text" class="form-control" id="username" name="name" value="{{$users->name}}">
+                      {!! $errors->first('name', '<p class="help-block"><font color="red">:message</font></p>') !!}
+                    </div>
+                    <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
+                      <label for="password">စကားဝှက်ထည့်ရန်</label>
+                      <input type="password" class="form-control" id="password" name="password" placeholder="စကားဝှက်ထည့်ရန်">
+                      {!! $errors->first('password', '<p class="help-block"><font color="red">:message</font></p>') !!}
+                    </div>
+                    <div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' : ''}}">
+                      <label for="password_confirmation">စကားဝှက်ကိုနောက်တစ်ကြိမ်ပြန်ထည့်ရန်</label>
+                      <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="စကားဝှက်ကိုနောက်တစ်ကြိမ်ပြန်ထည့်ရန်">
+                      {!! $errors->first('password_confirmation', '<p class="help-block"><font color="red">:message</font></p>') !!}
+                    </div>
+                    <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control" id="email" name="email" value="{{$users->email}}">
+                      {!! $errors->first('email', '<p class="help-block"><font color="red">:message</font></p>') !!}
+                    </div>
+                    <div class="form-group {{ $errors->has('role') ? 'has-error' : ''}}">
+                    <label for="cars">ရာထူးကို‌ရွေးပါ။</label>
+                      <select name="role" id="role">
+                      <option value="Guest" selected> Guest </option>
+                        <option value="Manager">Manager</option>
+                      </select>
+                      {!! $errors->first('role', '<p class="help-block"><font color="red">:message</font></p>') !!}
+                    </div>
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                      <button type="submit" class="btn btn-primary" name="submit">အတည်ပြုရန်နှိပ်ပါ</button>
+                  </div>
+                </form>
+      </div>
+    </div>
+    @endif
   </div>
+
+
 
   <div class="col-lg-9 grid-margin stretch-card">
     <div class="card">
       <div class="p-4 border-bottom bg-light">
-        <h4 class="card-title mb-0">ရွှေအရည်အသွေးပြဇယား</h4>
+        <h4 class="card-title mb-0">အသုံးပြုသူနာမည်ပြဇယား</h4>
       </div>
       
               
          
       <div class="card-body">
-      <input class="form-control " id="myInput" style="width:200px" onkeyup="myFunction()" type="text" placeholder="ရွှေအရည်အသွေးရိုက်ပြီးရှာပါ" aria-label="Search">
+      <input class="form-control " id="myInput" style="width:200px" onkeyup="myFunction()" type="text" placeholder="အသုံးပြုသူနာမည်ရိုက်ပြီးရှာပါ" aria-label="Search">
       <table class="table table-striped" id="myTable"  style="overflow-x:auto;">
                 <thead>
                     <tr>
@@ -69,6 +129,8 @@
                         <th>အသုံးပြုသူ</th>
                         <th>စကားဝှက်</th>
                         <th>Email</th>
+                        <th>ရာထူး</th>
+                        <th>လုပ်ဆောင်ချက်</th>
                     </tr>
 
                 </thead>
@@ -81,7 +143,9 @@
                     <td>{{ $data->name }}</td>
                     <td>{{ $data->password }}</td>
                     <td>{{ $data->email }}</td>
+                    <td>{{ $data->role }}</td>
                     <td>
+                       <a href="{{ action('UsersController@edit',$data->id) }}" class="btn btn-primary btn-sm"><i class="mdi mdi-border-color"></i></a>
                         <a href="{{ action('UsersController@delete',$data->id) }}" class="btn btn-danger btn-sm"><i class="mdi mdi-delete"></i></a>
                     </td>
                   </tr>

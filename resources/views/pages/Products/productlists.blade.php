@@ -85,7 +85,7 @@
                     <td>
                     <a href="{{ action('ProductListsController@editscreen',$data->id) }}" class="btn btn-primary btn-sm"><i class="mdi mdi-border-color"></i></a>
                     <a href="{{ action('ProductListsController@delete',$data->id) }}" class="btn btn-danger btn-sm"><i class="mdi mdi-delete"></i></a>
-                    <a href="{{ action('SaleProductsController@editscreen',$data->id) }}" class="btn btn-primary btn-sm"><i class="mdi mdi-coin"></i>Sell</a>
+                    <a href="{{ action('SaleProductsController@movesalelistscreen',$data->id) }}" class="btn btn-primary btn-sm"><i class="mdi mdi-coin"></i>Sell</a>
                     </td>
                   </tr>
                   @endforeach

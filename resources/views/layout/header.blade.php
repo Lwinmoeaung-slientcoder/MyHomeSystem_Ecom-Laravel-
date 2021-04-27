@@ -126,10 +126,12 @@
               </div>
             </div>
           </a>
+          @if(Auth::check())
           <a class="dropdown-item mt-2"> Manage Accounts </a>
           <a class="dropdown-item"> Change Password </a>
           <a class="dropdown-item"> Check Inbox </a>
           <a class="dropdown-item"> Sign Out </a>
+          @endif
         </div>
       </li>
     </ul>

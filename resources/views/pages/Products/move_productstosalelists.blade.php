@@ -15,7 +15,7 @@
   <div class="col-lg-12">
     <div class="card">
       <div class="p-4 border-bottom bg-light">
-        <h4 class="card-title mb-0">ပစ္စည်းစာရင်းပြင်ရန်</h4><br>
+        <h4 class="card-title mb-0">အရောင်းစာရင်းသို့ရွှေ့ရန်</h4><br>
         <font size="2" color="red"> * ထည့်စရာမရှိရင် 0 (သုည) ထည့်ပေးပါခင်ဗျာ</font>
       </div>
       <form method="POST">
@@ -47,13 +47,13 @@
 
                     <div class="form-group {{ $errors->has('total_cost') ? 'has-error' : ''}}">
                             <label for="category">စုစုပေါင်းရောင်းရငွေ</label>
-                            <input type="text" class="form-control" name="total_cost" value="{{$products->total_cost}}">
+                            <input type="text" class="form-control" name="total_cost">
                             {!! $errors->first('total_cost', '<p class="help-block"><font color="red">:message</font></p>') !!}
                         </div>
 
                     <div class="form-group {{ $errors->has('sold_date') ? 'has-error' : ''}}">
                         <label for="category">ရောင်းတဲ့ရက်စွဲ</label>
-                        <input type="date" class="form-control" name="sold_date" value="{{$products->sold_date}}">  
+                        <input type="date" class="form-control" name="sold_date">   
                         {!! $errors->first('sold_date', '<p class="help-block"><font color="red">:message</font></p>') !!}
                     </div>
 
@@ -113,7 +113,7 @@
             <button type="submit" class="btn btn-primary" name="submit">အတည်ပြုရန်နှိပ်ပါ</button>&nbsp;&nbsp;
             @endif
            
-                    <a href="/sales" class="btn btn-warning">အရောင်းစာရင်းစာရင်း</a>&nbsp;&nbsp;
+                    <a href="/productlists" class="btn btn-warning">ပစ္စည်းစာရင်း</a>&nbsp;&nbsp;
                     </form>
         </div>
     </div>

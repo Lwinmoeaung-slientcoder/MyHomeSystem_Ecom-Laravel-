@@ -13,12 +13,16 @@
 
 Auth::routes(['verify' => true]);
 
+//lOGIN
+//26042021
+Route::get('/', 'Auth\LoginController@show');
+Route::post('/', 'Auth\LoginController@login');
 
-// Route::get('/testing', function () {
-//     return view('testing');
-// });
 
-// Route::get('/','DashboardController@index');
+
+Route::get('/testing', function () {
+    return view('testing');
+});
 
 Route::group(['prefix' => 'basic-ui'], function(){
     Route::get('accordions', function () { return view('pages.basic-ui.accordions'); });
@@ -147,18 +151,23 @@ Route::get('productlists', 'ProductListsController@index');
 Route::get('productlists/{id}', 'ProductListsController@delete');
 Route::get('productlists/edit/{id}', 'ProductListsController@editscreen');
 Route::post('productlists/edit/{id}', 'ProductListsController@edit');
+Route::get('products/{id}/sell', 'SaleProductsController@movesalelistscreen');
+Route::post('products/{id}/sell', 'SaleProductsController@add');
 Route::post('add', 'ProductListsController@insert');
 Route::get('add', 'ProductListsController@addnewscreen');
 
 //Register form
 //22042021
-Route::get('users/register', 'Auth\RegisterController@show');
-Route::post('users/register', 'Auth\RegisterController@register');
+Route::get('users/register', 'UsersController@show');
+Route::post('users/register', 'UsersController@add');
 Route::get('users/{id}', 'UsersController@delete');
+Route::get('users/edit/{id}', 'UsersController@editscreen');
+Route::post('users/edit/{id}', 'UsersController@edit');
 
 //LogOut Form
 //22042021
-Route::get('users/logut', 'Auth\LoginController@logout');
+Route::get('users/logout', 'Auth\LoginController@logout');
+Route::get('/logout', 'Auth\LoginController@@logout');
 
 //DashBoard
 //23042021
@@ -168,8 +177,10 @@ Route::get('dashboard', 'DashboardController@index');
 //23042021
 Route::get('sales', 'SaleProductsController@index');
 Route::get('sales/{id}/sell', 'SaleProductsController@editscreen');
-Route::post('sales/{id}/sell', 'SaleProductsController@add');
+Route::post('sales/{id}/sell', 'SaleProductsController@edit');
 Route::get('sales/{id}', 'SaleProductsController@delete');
+
+
 
 // For Clear cache
 Route::get('/clear-cache', function() {
@@ -184,3 +195,7 @@ Route::any('/{page?}',function(){
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
