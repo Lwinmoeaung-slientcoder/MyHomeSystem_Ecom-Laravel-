@@ -79,7 +79,6 @@
         </div>
         <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left">
           <i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Total Users </p>
-          <a href="{{ url('/logout') }}"> logout </a>
       </div>
     </div>
   </div>

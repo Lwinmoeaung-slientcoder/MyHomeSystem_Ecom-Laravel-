@@ -48,6 +48,7 @@
                     <label for="cars">ရာထူးကို‌ရွေးပါ။</label>
                       <select name="role" id="role">
                       <option value="Guest" selected> Guest </option>
+                      <option value="Staff">Staff</option>
                         <option value="Manager">Manager</option>
                       </select>
                       {!! $errors->first('role', '<p class="help-block"><font color="red">:message</font></p>') !!}
@@ -130,7 +131,9 @@
                         <th>စကားဝှက်</th>
                         <th>Email</th>
                         <th>ရာထူး</th>
+                        @if(Auth::User()->role=='Manager')
                         <th>လုပ်ဆောင်ချက်</th>
+                        @endif
                     </tr>
 
                 </thead>
@@ -144,10 +147,13 @@
                     <td>{{ $data->password }}</td>
                     <td>{{ $data->email }}</td>
                     <td>{{ $data->role }}</td>
+
+                    @if(Auth::User()->role=='Manager')
                     <td>
                        <a href="{{ action('UsersController@edit',$data->id) }}" class="btn btn-primary btn-sm"><i class="mdi mdi-border-color"></i></a>
                         <a href="{{ action('UsersController@delete',$data->id) }}" class="btn btn-danger btn-sm"><i class="mdi mdi-delete"></i></a>
                     </td>
+                    @endif
                   </tr>
                   @endforeach
 

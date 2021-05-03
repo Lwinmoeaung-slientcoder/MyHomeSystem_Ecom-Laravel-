@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Users;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use Auth;
 
 class UsersController extends Controller
 {
       public function show()
       {
           $userdata = User::paginate(4);
-          return view('pages.auth.register', compact('userdata'));
+          return view('auth.register', compact('userdata'));
        }
 
       public function delete($id)
@@ -26,7 +27,7 @@ class UsersController extends Controller
       $userdata = User::paginate(4);
           $users=User::whereId($id)->firstorFail();
           $request->session()->put('editvalue', 'edit');
-          return view('pages.auth.register', compact(['userdata','users']));
+          return view('auth.register', compact(['userdata','users']));
   
   }
 
@@ -41,7 +42,7 @@ class UsersController extends Controller
           $request->session()->forget('editvalue');
           $userdata = User::paginate(4);
           session()->flash('status', 'အောင်မြင်စွာပြင်လိုက်ပါပြီ');
-          return view('pages.auth.register', compact('userdata'));
+          return view('auth.register', compact('userdata'));
     }
     
     public function add(Users $request)
@@ -54,6 +55,11 @@ class UsersController extends Controller
                     ]);
     
                 return redirect()->back()->with('status','အောင်မြင်ထည့်လိုက်ပါပြီ!');
+    }
+    public function logout()
+    {
+      Auth::logout();
+      return redirect('/');
     }
     
 }

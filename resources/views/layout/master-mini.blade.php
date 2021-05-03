@@ -24,6 +24,10 @@
   {!! Html::style('css/app.css') !!}
   <!-- end common css -->
 
+<!-- login css -->
+  {!! Html::style('css/login.css') !!}
+ <!-- end login css -->
+
   @stack('style')
 </head>
 <body data-base-url="{{url('/')}}">
@@ -37,6 +41,10 @@
     <!-- base js -->
     {!! Html::script('js/app.js') !!}
     <!-- end base js -->
+
+       <!-- login js -->
+    {!! Html::script('js/login.js') !!}
+     <!-- end login js -->
 
     <!-- plugin js -->
     @stack('plugin-scripts')

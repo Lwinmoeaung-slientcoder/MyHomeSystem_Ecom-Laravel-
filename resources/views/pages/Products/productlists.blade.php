@@ -33,6 +33,7 @@
       <input class="form-control " id="myInput1" style="width:200px" onkeyup="myFunction1()" type="text" placeholder="ဆိုင််နာမည်ရိုက်ပြီးရှာပါ" aria-label="Search"><br/>
       </div>
       <div class="col-md-4">
+      <a href="#" class="btn btn-info btn-sm"><i class="mdi mdi-file-document"></i>Excelထုတ်ရန်နှိပ်ပါ</a>
       <a href="/add" class="btn btn-success btn-sm"><i class="mdi mdi-plus"></i>ပစ္စည်းအသစ်ထည့်ရန်နှိပ်ပါ</a>
     
       </div>
@@ -51,7 +52,9 @@
                     <th colspan="3">ကျောက်ချိန်</th>
                     <th rowspan="2">ကျောက်ဖိုး</th>
                     <th rowspan="2">ဝယ်တဲ့ရက်စွဲ</th>
+                    @if(Auth::User()->role=='Manager' || Auth::User()->role=='Staff')
                     <th rowspan="2">လုပ်ဆောင်ချက်</th>
+                    @endif
 
                     </tr>
                     <tr>
@@ -82,11 +85,20 @@
                     <td>{{ $data->k_yway }}</td>
                     <td>{{ $data->k_price }}</td>
                     <td>{{ $data->bought_date }}</td>
+
+                    @if(Auth::User()->role=='Manager')
                     <td>
                     <a href="{{ action('ProductListsController@editscreen',$data->id) }}" class="btn btn-primary btn-sm"><i class="mdi mdi-border-color"></i></a>
                     <a href="{{ action('ProductListsController@delete',$data->id) }}" class="btn btn-danger btn-sm"><i class="mdi mdi-delete"></i></a>
                     <a href="{{ action('SaleProductsController@movesalelistscreen',$data->id) }}" class="btn btn-primary btn-sm"><i class="mdi mdi-coin"></i>Sell</a>
                     </td>
+                    @endif
+
+                    @if(Auth::User()->role=='Staff')
+                    <td>
+                    <a href="{{ action('SaleProductsController@movesalelistscreen',$data->id) }}" class="btn btn-primary btn-sm"><i class="mdi mdi-coin"></i>Sell</a>
+                    </td>
+                    @endif
                   </tr>
                   @endforeach
 

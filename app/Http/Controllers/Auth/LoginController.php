@@ -39,7 +39,7 @@ class LoginController extends Controller
     }
 
     public function show(){
-        return view('pages.auth.login');
+        return view('auth.login');
     }
 
 }

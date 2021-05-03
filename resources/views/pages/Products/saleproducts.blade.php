@@ -33,7 +33,7 @@
       <input class="form-control " id="myInput1" style="width:200px" onkeyup="myFunction1()" type="text" placeholder="ဆိုင််နာမည်ရိုက်ပြီးရှာပါ" aria-label="Search"><br/>
       </div>
       <div class="col-md-4">
-      <a href="/add" class="btn btn-success btn-sm"><i class="mdi mdi-plus"></i>ပစ္စည်းအသစ်ထည့်ရန်နှိပ်ပါ</a>
+      <a href="#" class="btn btn-info btn-sm"><i class="mdi mdi-file-document"></i>Excelထုတ်ရန်နှိပ်ပါ</a>
     
       </div>
       </div>
@@ -52,7 +52,9 @@
                     <th rowspan="2">ကျောက်ဖိုး</th>
                     <th rowspan="2">ရောင်းရငွေ</th>
                     <th rowspan="2">ရောင်းတဲ့ရက်စွဲ</th>
+                    @if(Auth::User()->role=='Manager')
                     <th rowspan="2">လုပ်ဆောင်ချက်</th>
+                    @endif
 
                     </tr>
                     <tr>
@@ -84,10 +86,14 @@
                     <td>{{ $data->k_price }}</td>
                     <td>{{ $data->total_cost }}</td>
                     <td>{{ $data->sold_date }}</td>
+
+                    @if(Auth::User()->role=='Manager')
                     <td>
                     <a href="{{ action('SaleProductsController@editscreen',$data->id) }}" class="btn btn-primary btn-sm"><i class="mdi mdi-border-color"></i></a>
                     <a href="{{ action('SaleProductsController@delete',$data->id) }}" class="btn btn-danger btn-sm"><i class="mdi mdi-delete"></i></a>
                     </td>
+                    @endif
+
                   </tr>
                   @endforeach
 

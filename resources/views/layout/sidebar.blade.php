@@ -7,10 +7,10 @@
             <img src="{{ url('assets/images/faces/face8.jpg') }}" alt="profile image">
           </div>
           <div class="text-wrapper">
-            <p class="profile-name">Richard V.Welsh</p>
+            <p class="profile-name">{{ Auth::user()->name }}</p>
             <div class="dropdown" data-display="static">
               <a href="#" class="nav-link d-flex user-switch-dropdown-toggler" id="UsersettingsDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <small class="designation text-muted">Manager</small>
+                <small class="designation text-muted">{{ Auth::user()->role }}</small>
                 <span class="status-indicator online"></span>
               </a>
               <div class="dropdown-menu" aria-labelledby="UsersettingsDropdown">
@@ -30,7 +30,7 @@
                 <a class="dropdown-item mt-2"> Manage Accounts </a>
                 <a class="dropdown-item"> Change Password </a>
                 <a class="dropdown-item"> Check Inbox </a>
-                <a href="users/logut" class="dropdown-item"> Sign Out </a>
+                <a href="/logout" class="dropdown-item"> Sign Out </a>
               </div>
             </div>
           </div>
@@ -71,13 +71,26 @@
         </ul>
       </div>
     </li>
-
+    @if(Auth::User()->role=='Manager' || Auth::User()->role=='Staff')
     <li class="nav-item {{ active_class(['/users/register']) }}">
       <a class="nav-link" href="{{ url('/users/register') }}">
         <i class="mdi mdi-message-text"></i>
         <span class="menu-title">အသုံးပြုသူစာရင်း</span> 
         </a>
       </li>
+      <li class="nav-item {{ active_class(['/goldquality']) }}">
+      <a class="nav-link" href="{{ url('/goldquality') }}">
+        <i class="mdi mdi-message-text"></i>
+        <span class="menu-title">ရွှေအရည်အသွေးထည့်ရန်</span>
+      </a>
+    </li>
+    <li class="nav-item {{ active_class(['/sales']) }}">
+      <a class="nav-link" href="{{ url('/sales') }}">
+        <i class="mdi mdi-message-text"></i>
+        <span class="menu-title">အရောင်းစာရင်း</span> 
+        </a>
+      </li>
+  @endif
 
     <li class="nav-item {{ active_class(['/productlists']) }}">
       <a class="nav-link" href="{{ url('/productlists') }}">
@@ -85,20 +98,6 @@
         <span class="menu-title">ပစ္စည်းစာရင်း</span> 
         </a>
       </li>
-
-      <li class="nav-item {{ active_class(['/sales']) }}">
-      <a class="nav-link" href="{{ url('/sales') }}">
-        <i class="mdi mdi-message-text"></i>
-        <span class="menu-title">အရောင်းစာရင်း</span> 
-        </a>
-      </li>
-
-    <li class="nav-item {{ active_class(['/goldquality']) }}">
-      <a class="nav-link" href="{{ url('/goldquality') }}">
-        <i class="mdi mdi-message-text"></i>
-        <span class="menu-title">ရွှေအရည်အသွေးထည့်ရန်</span>
-      </a>
-    </li>
   </ul>
 </nav>
 
