@@ -8,6 +8,8 @@ use App\Http\Requests\SalesProductRequest;
 use App\SaleProducts;
 use App\ProductLists;
 use App\Goldquality;
+use App\Exports\SaleProductsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SaleProductsController extends Controller
 {
@@ -76,5 +78,25 @@ class SaleProductsController extends Controller
         $result->delete();
         return redirect()->back()->with('status','အောင်မြင်စွာဖျက်လိုက်ပါပြီ');
     }
-
+    public function export() 
+    {
+      
+        $date=date('Ymd');
+        $filepath='C:/My Home System/';
+        $file='/SalesProductsList/AMK_'.  $date.'SaleProductsList.xlsx';
+        $temp;
+        $countFile=0;
+        $totalfiles=glob($filepath . "*");
+      
+        if(file_exists('C:/My Home System/'.$file)) { 
+            $countFile = count($totalfiles);
+            $temp='/SalesProductsList/AMK_'.  $date.'SaleProductsList('.$countFile.').xlsx';
+            $file=$temp;
+            Excel::store(new SaleProductsExport, $file,'real_public', \Maatwebsite\Excel\Excel::XLSX);
+         return redirect()->back()->with('excel', 'Export Successfully (Path=> C:/MY Home System/) ');
+        } else {
+            Excel::store(new SaleProductsExport, $file,'real_public', \Maatwebsite\Excel\Excel::XLSX);
+         return redirect()->back()->with('excel', 'Export Successfully (Path=> C:/MY Home System/)');
+        }
+    }
 }

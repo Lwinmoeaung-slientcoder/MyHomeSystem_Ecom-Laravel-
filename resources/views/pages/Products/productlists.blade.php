@@ -9,6 +9,9 @@
           @if (session('status'))
                 <P class="alert alert-success">{{session('status')}}</p>
             @endif
+            @if (session('excel'))
+                <P class="alert alert-success">{{session('excel')}}</p>
+            @endif
       </div>
     </div>
 <div class="row">
@@ -26,17 +29,25 @@
 
       <div class="col-md-12">
       <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-3">
       <input class="form-control " id="myInput" style="width:200px" onkeyup="myFunction()" type="text" placeholder="ပစ္စည်းနာမည်ရိုက်ပြီးရှာပါ" aria-label="Search"><br/>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
       <input class="form-control " id="myInput1" style="width:200px" onkeyup="myFunction1()" type="text" placeholder="ဆိုင််နာမည်ရိုက်ပြီးရှာပါ" aria-label="Search"><br/>
       </div>
-      <div class="col-md-4">
-      <a href="#" class="btn btn-info btn-sm"><i class="mdi mdi-file-document"></i>Excelထုတ်ရန်နှိပ်ပါ</a>
+      <div class="col-md-3">
+      <form action="{{ action('ProductListsController@export') }}" method="get" accept-charset="UTF-8">        
+                                    <!-- <a href="/productssexport" class="btn btn-primary btn3d1"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true">&nbsp;Back</span></a>
+                                    @if(!$productsdata->isEmpty())
+                                      <a href="#" class="btn btn-primary btn-md delete btn3d1"><span class="glyphicon glyphicon-save-file" aria-hidden="true">&nbsp;ExcelDownload</span></a>
+                                  
+                                    @endif -->
+                                   
+      <a href="/productssexport" class="btn btn-info btn-sm"><i class="mdi mdi-file-document"></i>Excelထုတ်ရန်နှိပ်ပါ</a>
+</form>
+</div>
+      <div class="col-md-3">
       <a href="/add" class="btn btn-success btn-sm"><i class="mdi mdi-plus"></i>ပစ္စည်းအသစ်ထည့်ရန်နှိပ်ပါ</a>
-    
-      </div>
       </div>
       </div >
       <table class="table table-striped table-bordered" id="myTable"  style="overflow-x:auto;overflow-y:auto;">

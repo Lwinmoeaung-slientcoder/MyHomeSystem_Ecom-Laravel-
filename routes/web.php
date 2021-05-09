@@ -23,27 +23,6 @@ Route::get('/testing', function () {
     return view('testing');
 });
 
-
-Route::group(['prefix' => 'icons'], function(){
-    Route::get('material', function () { return view('pages.icons.material'); });
-    Route::get('flag-icons', function () { return view('pages.icons.flag-icons'); });
-    Route::get('font-awesome', function () { return view('pages.icons.font-awesome'); });
-    Route::get('simple-line-icons', function () { return view('pages.icons.simple-line-icons'); });
-    Route::get('themify', function () { return view('pages.icons.themify'); });
-});
-
-
-
-Route::group(['prefix' => 'user-pages'], function(){
-    Route::get('login', function () { return view('pages.user-pages.login'); });
-    Route::get('login-2', function () { return view('pages.user-pages.login-2'); });
-    Route::get('multi-step-login', function () { return view('pages.user-pages.multi-step-login'); });
-    Route::get('register', function () { return view('pages.user-pages.register'); });
-    Route::get('register-2', function () { return view('pages.user-pages.register-2'); });
-    Route::get('lock-screen', function () { return view('pages.user-pages.lock-screen'); });
-});
-
-
 //Insert Now
 
 Route::group(['middleware' => ['auth']], function() {
@@ -88,6 +67,10 @@ Route::get('sales/{id}/sell', 'SaleProductsController@editscreen');
 Route::post('sales/{id}/sell', 'SaleProductsController@edit');
 Route::get('sales/{id}', 'SaleProductsController@delete');
 
+/*Download  lists */
+//24042021
+Route::get('/productssexport', 'ProductListsController@export')->name('export');
+Route::get('/salesexport', 'SaleProductsController@export')->name('export1');
 });//end route group
 
 
