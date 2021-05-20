@@ -121,11 +121,3 @@
   
 </div>
 @endsection
-
-@push('plugin-scripts')
-  {!! Html::script('/assets/plugins/chartjs/chart.min.js') !!}
-@endpush
-
-@push('custom-scripts')
-  {!! Html::script('/assets/js/chart.js') !!}
-@endpush

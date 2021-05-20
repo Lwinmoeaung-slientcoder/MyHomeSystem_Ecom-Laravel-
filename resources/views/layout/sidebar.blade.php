@@ -47,7 +47,7 @@
     @if(Auth::User()->role=='Manager' || Auth::User()->role=='Staff')
     <li class="nav-item {{ active_class(['/users/register']) }}">
       <a class="nav-link" href="{{ url('/users/register') }}">
-        <i class="mdi mdi-message-text"></i>
+      <i class="mdi mdi-account"></i>
         <span class="menu-title">&nbsp;&nbsp;အသုံးပြုသူစာရင်း</span> 
         </a>
       </li>
@@ -59,7 +59,7 @@
     </li>
     <li class="nav-item {{ active_class(['/sales']) }}">
       <a class="nav-link" href="{{ url('/sales') }}">
-        <i class="mdi mdi-message-text"></i>
+      <i class="mdi mdi-text-shadow"></i>
         <span class="menu-title">&nbsp; အရောင်းစာရင်း</span> 
         </a>
       </li>
@@ -67,7 +67,7 @@
 
     <li class="nav-item {{ active_class(['/productlists']) }}">
       <a class="nav-link" href="{{ url('/productlists') }}">
-        <i class="mdi mdi-message-text"></i>
+      <i class="mdi mdi-file-pdf"></i>
         <span class="menu-title">&nbsp; ပစ္စည်းစာရင်း</span> 
         </a>
       </li>

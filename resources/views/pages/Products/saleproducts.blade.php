@@ -29,18 +29,20 @@
 
       <div class="col-md-12">
       <div class="row">
+        <div class="col-md-4">
+          <input class="form-control " id="myInput" style="width:200px" onkeyup="myFunction()" type="text" placeholder="ပစ္စည်းနာမည်ရိုက်ပြီးရှာပါ" aria-label="Search"><br/>
+        </div>
+        <div class="col-md-4">
+           <input class="form-control " id="myInput1" style="width:200px" onkeyup="myFunction1()" type="text" placeholder="ဆိုင််နာမည်ရိုက်ပြီးရှာပါ" aria-label="Search"><br/>
+        </div>
       <div class="col-md-4">
-      <input class="form-control " id="myInput" style="width:200px" onkeyup="myFunction()" type="text" placeholder="ပစ္စည်းနာမည်ရိုက်ပြီးရှာပါ" aria-label="Search"><br/>
-      </div>
-      <div class="col-md-4">
-      <input class="form-control " id="myInput1" style="width:200px" onkeyup="myFunction1()" type="text" placeholder="ဆိုင််နာမည်ရိုက်ပြီးရှာပါ" aria-label="Search"><br/>
-      </div>
-      <div class="col-md-3">
-      <form action="{{ action('SaleProductsController@export') }}" method="get" accept-charset="UTF-8">                              
-         <a href="/salesexport" class="btn btn-info btn-sm"><i class="mdi mdi-file-document"></i>Excelထုတ်ရန်နှိပ်ပါ</a>
-      </form>
-    </div>
+        <form action="{{ action('SaleProductsController@export') }}" method="get" accept-charset="UTF-8">                              
+          <a href="/salesexport" class="btn btn-info btn-sm"><i class="mdi mdi-file-document"></i>Excelထုတ်ရန်နှိပ်ပါ</a>
+        </form>
+     </div>
    </div >
+   <div class="row">
+     <div class="col-md-12">
       <table class="table table-striped table-bordered" id="myTable"  style="overflow-x:auto;overflow-y:auto;">
                 <thead>
                 <tr>
@@ -102,20 +104,11 @@
 
                 </tbody>
                 
-            </table>
+              </table>
+            </div>
+        </div>
       </div>
     </div>
   </div>
-
- 
-  
 </div>
 @endsection
-
-@push('plugin-scripts')
-  {!! Html::script('/assets/plugins/chartjs/chart.min.js') !!}
-@endpush
-
-@push('custom-scripts')
-  {!! Html::script('/assets/js/chart.js') !!}
-@endpush

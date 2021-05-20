@@ -1,6 +1,6 @@
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-  <a href="/dashboard" style="padding:20px;color:Green" > AMK || Inventory System</a>
+  <a href="/dashboard" style="padding:20px;color:Green" >Controller</a>
     <a class="navbar-brand brand-logo-mini" href="{{ url('/') }}">
       <img src="{{ url('assets/images/faces/face8.png') }}" alt="logo" /> </a>
   </div>
@@ -10,7 +10,7 @@
     </button>
     <ul class="navbar-nav navbar-nav-left header-links">
       <li class="nav-item d-none d-xl-flex">
-        <a href="#" class="nav-link">Schedule <span class="badge badge-primary ml-1">New</span>
+        <a href="#" class="nav-link">AMK || SYSTEM <span class="badge badge-primary ml-1">2021</span>
         </a>
       </li>
      
