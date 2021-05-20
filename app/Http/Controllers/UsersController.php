@@ -56,6 +56,24 @@ class UsersController extends Controller
     
                 return redirect()->back()->with('status','အောင်မြင်ထည့်လိုက်ပါပြီ!');
     }
+
+    public function updatescreen(Request $request,$id)
+    {
+          $users=User::whereId($id)->firstorFail();
+          return view('auth.changepassword', compact('users'));
+  
+  }
+    public function p_update(Users $request,$id)
+    { 
+          $users=User::whereId($id)->firstorFail();
+          $users->name         = $request->get('name');
+          $users->email        = $request->get('email');
+          $users->password     = Hash::make($request->get('password'));
+          $users->role         = $request->get('role');
+          $users->update();
+          return redirect()->back()->with('status','အောင်မြင်စွာပြင်လိုက်ပါပြီ!');
+    }
+
     public function logout()
     {
       Auth::logout();

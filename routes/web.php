@@ -18,11 +18,6 @@ Auth::routes(['verify' => true]);
 Route::get('/', 'Auth\LoginController@show');
 Route::post('/', 'Auth\LoginController@login');
 
-
-Route::get('/testing', function () {
-    return view('testing');
-});
-
 //Insert Now
 
 Route::group(['middleware' => ['auth']], function() {
@@ -52,6 +47,10 @@ Route::get('users/{id}', 'UsersController@delete');
 Route::get('users/edit/{id}', 'UsersController@editscreen');
 Route::post('users/edit/{id}', 'UsersController@edit');
 
+//Change password
+//20052021
+Route::get('/update/{id}', 'UsersController@updatescreen');
+Route::post('/update/{id}', 'UsersController@p_update');
 //LogOut
 //22042021
 Route::get('/logout', 'UsersController@logout');

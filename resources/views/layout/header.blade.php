@@ -1,6 +1,6 @@
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-  <a href="/dashboard" style="padding:20px;color:Green" >Controller</a>
+  <a href="/dashboard" style="padding:20px;color:Green" >Inventory </a>
     <a class="navbar-brand brand-logo-mini" href="{{ url('/') }}">
       <img src="{{ url('assets/images/faces/face8.png') }}" alt="logo" /> </a>
   </div>
@@ -38,7 +38,7 @@
             </div>
           </a>
           @if(Auth::check())
-          <a class="dropdown-item"> Change Password </a>
+          <a href="/update/{{ Auth::user()->id }}" class="dropdown-item"> Change Password </a>
           <a href="/logout" class="dropdown-item"> Sign Out </a>
           @endif
         </div>

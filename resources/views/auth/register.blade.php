@@ -97,6 +97,7 @@
                     <label for="cars">ရာထူးကို‌ရွေးပါ။</label>
                       <select name="role" id="role">
                       <option value="Guest" selected> Guest </option>
+                      <option value="Staff">Staff</option>
                         <option value="Manager">Manager</option>
                       </select>
                       {!! $errors->first('role', '<p class="help-block"><font color="red">:message</font></p>') !!}

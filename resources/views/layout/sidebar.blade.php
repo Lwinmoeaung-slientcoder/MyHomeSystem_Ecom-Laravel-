@@ -27,9 +27,7 @@
                     </div>
                   </div>
                 </a>
-                <a class="dropdown-item mt-2"> Manage Accounts </a>
-                <a class="dropdown-item"> Change Password </a>
-                <a class="dropdown-item"> Check Inbox </a>
+                <a href="/update/{{ Auth::user()->id }}" class="dropdown-item"> Change Password </a>
                 <a href="/logout" class="dropdown-item"> Sign Out </a>
               </div>
             </div>
