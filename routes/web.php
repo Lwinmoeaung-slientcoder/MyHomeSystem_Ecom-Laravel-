@@ -18,6 +18,11 @@ Auth::routes(['verify' => true]);
 Route::get('/', 'Auth\LoginController@show');
 Route::post('/', 'Auth\LoginController@login');
 
+//Guest Register
+//17072021
+Route::get('/guest/register','Auth\RegisterController@guestregister');
+Route::post('/guest/register', 'Auth\RegisterController@create');
+
 //Insert Now
 
 Route::group(['middleware' => ['auth']], function() {

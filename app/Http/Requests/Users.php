@@ -25,12 +25,12 @@ class Users extends FormRequest
     public function rules()
     {
         return [
-            'name'          => 'required', 'string', 'max:255',
+            'name'          => 'required| string| max:255',
             'email'         => ['sometimes','required', 'string', 'email', 'max:255',
             Rule::unique('users')->ignore($this->id),
         ],
-            'password'      => 'required', 'string', 'min:8', 'confirmed',
-            'role'          => 'required', 'string',
+            'password'      => 'required|string| min:8|required_with:password_confirmation |confirmed',
+            'role'          => 'required|string',
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Http\Requests\Users;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -61,17 +62,24 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(Users $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+            User::create([
+            'name'    => $request->name,
+            'email'   => $request->email,
+            'password'=> Hash::make($request->password),
+            'role'    => $request->role
+            ]);
+         return redirect()->back()->with('status','Registered Successfully..Please Login !!!');
     }
+
+    public function guestregister(){
+        return view('auth.GuestRegister');
+    }
+
     public function show(){
         $userdata = User::paginate(4);
         return view('pages.auth.register', compact('userdata'));
     }
-    
+
 }
