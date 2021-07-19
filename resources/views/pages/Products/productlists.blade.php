@@ -20,7 +20,7 @@
       <div class="p-4 border-bottom bg-light">
         <h4 class="card-title mb-0">ပစ္စည်းစာရင်းပြဇယား</h4>
       </div>
-      
+
       <div class="card-body">
 
       <div class="col-md-12">
@@ -35,14 +35,14 @@
             </div>
 
             <div class="col-md-3">
-              <form action="{{ action('ProductListsController@export') }}" method="get" accept-charset="UTF-8">         
+              <form action="{{ action('ProductListsController@export') }}" method="get" accept-charset="UTF-8">
                 <a href="/productssexport" class="btn btn-info btn-sm"><i class="mdi mdi-file-document"></i>Excelထုတ်ရန်နှိပ်ပါ</a>
             </form>
             </div>
 
             <div class="col-md-3">
               <a href="/add" class="btn btn-success btn-sm"><i class="mdi mdi-plus"></i>ပစ္စည်းအသစ်ထည့်ရန်နှိပ်ပါ</a>
-            </div>    
+            </div>
          </div >
 
       <table class="table table-striped table-bordered" id="myTable"  style="overflow-x:auto;overflow-y:auto;">
@@ -109,7 +109,7 @@
                   @endforeach
 
                 </tbody>
-                
+
             </table>
       </div>
     </div>
@@ -124,3 +124,42 @@
 @push('custom-scripts')
   {!! Html::script('/assets/js/chart.js') !!}
 @endpush
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+function myFunction1() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput1");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[3];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>

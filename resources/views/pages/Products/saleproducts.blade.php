@@ -15,16 +15,16 @@
       </div>
     </div>
 <div class="row">
-  
+
 
   <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="p-4 border-bottom bg-light">
         <h4 class="card-title mb-0">ပစ္စည်းစာရင်းပြဇယား</h4>
       </div>
-      
-              
-         
+
+
+
       <div class="card-body">
 
       <div class="col-md-12">
@@ -36,7 +36,7 @@
            <input class="form-control " id="myInput1" style="width:200px" onkeyup="myFunction1()" type="text" placeholder="ဆိုင််နာမည်ရိုက်ပြီးရှာပါ" aria-label="Search"><br/>
         </div>
       <div class="col-md-4">
-        <form action="{{ action('SaleProductsController@export') }}" method="get" accept-charset="UTF-8">                              
+        <form action="{{ action('SaleProductsController@export') }}" method="get" accept-charset="UTF-8">
           <a href="/salesexport" class="btn btn-info btn-sm"><i class="mdi mdi-file-document"></i>Excelထုတ်ရန်နှိပ်ပါ</a>
         </form>
      </div>
@@ -103,7 +103,7 @@
                   @endforeach
 
                 </tbody>
-                
+
               </table>
             </div>
         </div>
@@ -112,3 +112,42 @@
   </div>
 </div>
 @endsection
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+function myFunction1() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput1");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[3];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
